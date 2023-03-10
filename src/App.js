@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
+import Calendar from './Calendar.png';
 import 'animate.css';
 import './App.css';
 
@@ -68,7 +69,9 @@ class App extends Component {
     return (
       <div>
         <div className="header">
-          <img src={logo} className="app-logo" alt="logo" />
+          <img src={logo} className="logo" alt="logo" />
+          <h1>Multi-Day Checklist</h1>
+          <img src={Calendar} className="logo" alt="Calendar" />
         </div>
         <div className="content">
           <div>
@@ -79,7 +82,7 @@ class App extends Component {
               type="text" 
               placeholder="Create a list item"
             />
-            <button className="add-button" onClick={this.pushData}>Add</button>
+            <button className="add-button button" onClick={this.pushData}>Add</button>
           </div>
             
           <div className="list-container">
@@ -100,8 +103,8 @@ class App extends Component {
             ))}
           </div>
           
-          <button className="clear-button" onClick={this.clearData}>Clear</button>
- 
+          <button className="clear-button button" onClick={this.clearData}>Clear</button>
+
         </div>
       </div>
     );
