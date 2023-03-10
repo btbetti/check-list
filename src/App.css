@@ -1,0 +1,87 @@
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+ }
+
+.app-logo {
+  height: 110px;
+  animation: jackInTheBox;
+  animation-duration: 1s;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  
+}
+
+.input-text {
+  height: 30px;
+  width: 400px;
+  border-color: #393E46;
+  border-style: solid;
+  border-radius: 6px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.list-container {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.checked-item {
+  text-decoration: line-through;
+}
+
+.checked-item-text {
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+.checked-list-container {
+  text-align: center;
+}
+
+.add-button {
+  margin-left: 5px;
+  height: 30px;
+  width: 55px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.1);
+  background-color: #00ADB5;
+  border-color: #393E46;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+.add-button:hover {
+  background-color: #018a91;
+}
+
+.clear-button {
+  margin-top: 50px;
+  height: 30px;
+  width: 100px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.1);
+  background-color: #00ADB5;
+  border-color: #393E46;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  padding: 0;
+  box-sizing: content-box;
+
+}
+
+.clear-button:hover {
+  background-color: #018a91;
+}
