@@ -1,0 +1,14 @@
+.input-text {
+    margin-top: 50px;
+    margin-bottom: 15px;;
+    height: 30px;
+    width: 400px;
+    border-color: #393E46;
+    border-style: solid;
+    border-radius: 6px;
+}
+
+.add-button {
+    margin-left: 5px;
+    width: 55px;
+}

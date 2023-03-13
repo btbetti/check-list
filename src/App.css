@@ -19,36 +19,10 @@
   cursor: pointer;
 }
 
-.input-text {
-  margin-top: 50px;
-  height: 30px;
-  width: 400px;
-  border-color: #393E46;
-  border-style: solid;
-  border-radius: 6px;
-}
-
-ul {
-  list-style-type: none;
-}
-
-.list-container {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.checked-item {
-  text-decoration: line-through;
-}
-
 .checked-item-text {
   margin-top: 25px;
   margin-bottom: 5px;
   font-weight: bold;
-}
-
-.checked-list-container {
-  text-align: center;
 }
 
 .button {
@@ -67,11 +41,6 @@ ul {
 
 .button:hover {
   background-color: #018a91;
-}
-
-.add-button {
-  margin-left: 5px;
-  width: 55px;
 }
 
 .clear-button {
