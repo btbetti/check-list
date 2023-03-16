@@ -12,12 +12,43 @@
   flex-direction: column;
  }
 
+ .current-date{
+  margin-top: 0px;
+  margin-bottom: 0px;
+ }
+
 .logo {
   height: 100px;
   animation: jackInTheBox;
   animation-duration: 1s;
   cursor: pointer;
 }
+
+.date-picker {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #393E46;
+  color: white;
+}
+
+.day-picker-today {
+  font-weight: bold;
+  color:#00ADB5;
+}
+
+.day-picker-selected:not([disabled]) { 
+  font-weight: bold; 
+  border: 2px solid currentColor;
+}
+.day-picker-selected:hover:not([disabled]) { 
+  border-color: #00ADB5;
+  color: #00ADB5;
+}
+
+.rdp-button:hover:not([disabled]):not(.day-picker-selected){
+  color: #393E46;
+} 
 
 .checked-item-text {
   margin-top: 25px;

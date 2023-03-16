@@ -3,8 +3,11 @@ import List from './components/List';
 import ItemInput from './components/ItemInput';
 import logo from './logo.png';
 import Calendar from './Calendar.png';
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
 import 'animate.css';
 import './App.css';
+
 
 class App extends Component {
   constructor() {
@@ -12,10 +15,23 @@ class App extends Component {
     this.state = {
       checkList: [],
       checked: [],
-      inputText: "" 
+      inputText: "",
+      date: new Date(),
+      showDatePicker: false
     }
   }
-  
+
+  dateFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  weekdayFormatOptions = { weekday: 'long' };
+
+  datePicker = () => {
+    this.setState({showDatePicker: true});
+  }
+
+  handleDateChagne = (e) => {
+    this.setState({date: e, showDatePicker: false})
+  }
+
   handleKeyPress = (e) => {
     const code = (e.keyCode ? e.keyCode : e.which);
     if (e.key === 'Enter' || code === 13) {
@@ -67,18 +83,35 @@ class App extends Component {
         <div className="header">
           <img src={logo} className="logo" alt="logo" />
           <h1>Multi-Day Checklist</h1>
-          <img src={Calendar} className="logo" alt="Calendar" />
+          <img src={Calendar} className="logo" alt="Calendar" onClick={this.datePicker} />
+          <DayPicker 
+            style={{visibility: this.state.showDatePicker ? 'visible' : 'hidden'}}
+            className="date-picker" 
+            mode="single" 
+            selected={this.state.date} 
+            onSelect={this.handleDateChagne} 
+            modifiersClassNames={{
+              selected: "day-picker-selected",
+              today: "day-picker-today"
+            }}
+            weekStartsOn={1}
+            showWeekNumber
+          />
         </div>
         <div className="content">
+          <p>Checklist of</p>
+          <p className="current-date"><strong>{this.state.date.toLocaleDateString(navigator.language, this.dateFormatOptions)} ({this.state.date.toLocaleDateString(navigator.language, this.weekdayFormatOptions)})</strong></p>
           <ItemInput handleKeyPress={this.handleKeyPress} pushData={this.pushData} onInputChange={this.onInputChange} inputText={this.state.inputText}/>
           <List list={this.state.checkList} handleCheck={this.handleCheck} isChecked={this.isChecked} />
           <p className="checked-item-text">Items checked are:</p>
           <List list={this.state.checked}/>
           <button className="clear-button button" onClick={this.clearData}>Clear</button>
-        </div>
+        </div>     
       </div>
     );
   }
 }
+
+
 
 export default App;
