@@ -14,7 +14,6 @@ class App extends Component {
     super();
     this.state = {
       checkList: [],
-      checked: [],
       inputText: "",
       date: new Date(),
       showDatePicker: false
@@ -28,8 +27,8 @@ class App extends Component {
     this.setState({showDatePicker: true});
   }
 
-  handleDateChagne = (e) => {
-    this.setState({date: e, showDatePicker: false})
+  handleDateChange = (e) => {
+    this.setState({date: e, showDatePicker: false, inputText:""})
   }
 
   handleKeyPress = (e) => {
@@ -51,29 +50,28 @@ class App extends Component {
     } else if (this.state.checkList.indexOf(inputText) > -1) {
       alert("The list item is already avaible in the list, please try another one.");
     } else {
+      const newItem = {note: inputText, date: this.state.date.toDateString(), isChecked: false};
       this.setState({
-        checkList: [...this.state.checkList, inputText]
+        checkList: [...this.state.checkList, newItem]
       });
     }
   }
 
   handleCheck = (event) => {
-    let updatedList = [...this.state.checked];
-    if (event.target.checked) {
-      updatedList = [...this.state.checked, event.target.value];
-    } else {
-      updatedList.splice(this.state.checked.indexOf(event.target.value), 1);
-    }
-    this.setState({checked: updatedList});
+    let updatedList = [...this.state.checkList];
+    const checkedItem = this.state.checkList.filter(x => x.note===event.target.value)[0];
+    checkedItem.isChecked = event.target.checked;
+    this.setState({checkList: updatedList});
   };
 
-  isChecked = (item) => 
-    this.state.checked.includes(item) ? "checked-item" : "not-checked-item";
+  isChecked = (item) => {
+    return this.state.checkList.filter(x => x.note===item && x.isChecked).length>0 ? "checked-item" : "not-checked-item";
+  }
 
   clearData = () => {
     const confirmationAction = window.confirm("This will reset the page. Do you want to continue?");
     if(confirmationAction) {
-      this.setState({ checkList: [], checked: [], inputText:"" });
+      this.setState({ checkList: [], inputText:"" });
     }
   }
 
@@ -89,7 +87,7 @@ class App extends Component {
             className="date-picker" 
             mode="single" 
             selected={this.state.date} 
-            onSelect={this.handleDateChagne} 
+            onSelect={this.handleDateChange} 
             modifiersClassNames={{
               selected: "day-picker-selected",
               today: "day-picker-today"
@@ -102,16 +100,14 @@ class App extends Component {
           <p>Checklist of</p>
           <p className="current-date"><strong>{this.state.date.toLocaleDateString(navigator.language, this.dateFormatOptions)} ({this.state.date.toLocaleDateString(navigator.language, this.weekdayFormatOptions)})</strong></p>
           <ItemInput handleKeyPress={this.handleKeyPress} pushData={this.pushData} onInputChange={this.onInputChange} inputText={this.state.inputText}/>
-          <List list={this.state.checkList} handleCheck={this.handleCheck} isChecked={this.isChecked} />
+          <List list={this.state.checkList.filter(x => x.date===this.state.date.toDateString()).map(x => x.note)} handleCheck={this.handleCheck} isChecked={this.isChecked} />
           <p className="checked-item-text">Items checked are:</p>
-          <List list={this.state.checked}/>
+          <List list={this.state.checkList.filter(x => x.isChecked && x.date===this.state.date.toDateString()).map(x => x.note)}/>
           <button className="clear-button button" onClick={this.clearData}>Clear</button>
         </div>     
       </div>
     );
   }
 }
-
-
 
 export default App;
