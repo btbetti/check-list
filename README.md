@@ -1,6 +1,6 @@
 # Introduction
 
-Note taking website that provides the ability to create items for each day separately.\
+Note taking website that provides the ability to create items for each day separately. The notes are collected in a list, each item can be checked and unchecked.\
 Currently it is not possible to save between page refreshes.
 
 # Getting Started with Create React App
