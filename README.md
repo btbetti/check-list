@@ -1,3 +1,8 @@
+# Introduction
+
+Note taking website that provides the ability to create items for each day separately.\
+Currently it is not possible to save between page refreshes.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
